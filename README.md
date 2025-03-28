@@ -1,12 +1,72 @@
-# React + Vite
+# AffordMed Number Fetcher
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based application that fetches and displays numbers from different categories such as Prime Numbers, Fibonacci Sequence, Even Numbers, and Random Numbers using an external API.
 
-Currently, two official plugins are available:
+## Features
+- Fetches numbers from an API based on category.
+- Categories include Prime, Fibonacci, Even, and Random numbers.
+- Displays fetched numbers in a neatly styled UI.
+- Calculates and displays the average of fetched numbers.
+- Uses an authentication mechanism to retrieve a fresh API key each time.
+- Smooth UI with animations and click effects.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
 
-## Expanding the ESLint configuration
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/affordmed-number-fetcher.git
+   ```
+2. Navigate to the project folder:
+   ```bash
+   cd affordmed-number-fetcher
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm start
+   ```
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The application will run on **http://localhost:3000**.
+
+## API Usage
+The application communicates with an external API to fetch data. Before fetching numbers, it retrieves an authentication token.
+
+### Authentication API
+**Endpoint:**
+```http
+POST http://20.244.56.144/test/auth
+```
+**Request Body:**
+```json
+{
+  "companyName": "AffordMed",
+  "clientID": "233261b3-8d0b-4d22-9f60-537204f1d022",
+  "clientSecret": "GmOglHSfmwyUWpFa",
+  "ownerName": "Rakesh Manubolu",
+  "ownerEmail": "manubolurakesh@gmai.com",
+  "rollNo": "22761A1238"
+}
+```
+
+### Number Fetching APIs
+- Prime Numbers: `GET http://20.244.56.144/test/primes`
+- Fibonacci Sequence: `GET http://20.244.56.144/test/fibo`
+- Even Numbers: `GET http://20.244.56.144/test/even`
+- Random Numbers: `GET http://20.244.56.144/test/rand`
+
+All requests must include an authentication token:
+```http
+Authorization: Bearer <access_token>
+```
+
+## Project Structure
+```
+📂 affordmed-number-fetcher
+├── 📂 src
+│   ├── 📜 App.js       # Main React component
+│   ├── 📜 App.css      # Styles for the application
+│   ├── 📜 index.js     # Entry point for React
+├── 📜 package.json     # Dependencies and sc
